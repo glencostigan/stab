@@ -3,18 +3,18 @@ Stabilize a model rocket in-flight using 3-D printed fins, servos, on-board sens
 
 # Progress
 We have split the required goal of the project into three parts.
-* Stab-I    =>  Control Roll 
+* Stab-I    =>  Control Roll
 * Stab-II   =>  Control Pitch
 * Stab-III  =>  Control Yaw
 
 # 
-We decided to use an arduino to control on-board fins that 
+We decided to use an arduino to control on-board fins that
 
 
 
 
 
-# 
+# Contact
 
 This project is associated with the Student Space Technology Association (SSTA) orginization at the University of Tennessee at Knoxville.
 
