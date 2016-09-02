@@ -12,7 +12,7 @@ We decided to use an raspberry pi zero on-board to track the flight path, and we
 
 We are currently experimenting with simulating the rocket in a rocket simulation software, [OpenRocket](http://openrocket.sourceforge.net/). This open source software should allow us the calculate an approximate for variables such as coefficient of drag, coefficient of pressure, and many more. And screenshot of our rocket is Shown below
 
-![screenshot](http://github.com/glen-costigan/stab/blob/master/openrocket.PNG)
+![screenshot](http://i.imgur.com/OC29R1T.png)
 
 # Contact
 This project is associated with the Student Space Technology Association (SSTA) orginization at the University of Tennessee at Knoxville.
