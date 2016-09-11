@@ -205,4 +205,5 @@ x offset:  44
 y offset:  -152
 ```
 Use the x and y offset found and change it in `/python/HMC5883L/testsensor.py`
+
 Run `/python/HMC5883L/testsensor.py` and test every 90 degrees.
