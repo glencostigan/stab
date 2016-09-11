@@ -13,8 +13,8 @@ http://blog.bitify.co.uk/2013/11/reading-data-from-mpu-6050-on-raspberry.html
 Add the following lines:
 
 ```
-# i2c-bcm2708
-# i2c-dev
+i2c-bcm2708
+i2c-dev
 ```
 
 Connect MPU-6050 to i2c connections
@@ -29,11 +29,14 @@ Pin 6 - Ground connect to GND
 ```
 
 Check if MPU-6050 is connected.
-	# apt-get install i2c-tools
-	# i2cdetect -y 1
-
+```
+# apt-get install i2c-tools
+# i2cdetect -y 1
+```
 
 You should see this output:
+```
+Output:
      0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
 00:          -- -- -- -- -- -- -- -- -- -- -- -- --
 10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
@@ -43,14 +46,19 @@ You should see this output:
 50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 60: -- -- -- -- -- -- -- -- 68 -- -- -- -- -- -- --
 70: -- -- -- -- -- -- -- --
+```
 Enter the following command and you should get an output of 0x68 on screen if everything is working properly.
-	# i2cget -y 1 0x68 0x75
+```
+# i2cget -y 1 0x68 0x75
+```
 This command talks to the device whose address is 0x68 (the sensor) and retrieves the value in the register 0x75 which has a default value of 0x68 the same value as the address.
-READING FROM PYTHON
+# Reading from Python
 Download smbus module for python
+```
 # apt-get install python-smbus
+```
 Use the following test code for reading the sensor with python:
-
+```
 #!/usr/bin/python
 
 import smbus
@@ -122,10 +130,13 @@ print "accel_zout: ", accel_zout, " scaled: ", accel_zout_scaled
 
 print "x rotation: " , get_x_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled)
 print "y rotation: " , get_y_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled)
-
+```
 Run the code (run it twice if no real data the first time)
-	# python /python/MPU-6050/testsensor.py
+```
+# python /python/MPU-6050/testsensor.py
+```
 Output should look something like this:
+```
 gyro data
 ---------
 gyro_xout:  -92  scaled:  -1
@@ -139,26 +150,38 @@ accel_yout:  -52    scaled:  -0.003173828125
 accel_zout:  15408  scaled:  0.9404296875
 x rotation:  -13.7558411667
 y rotation:  -0.187818934829
+```
 Refer to reference for more clarification on code and math involved.
 
-HMC5883L
+# HMC5883L
 Reference: http://blog.bitify.co.uk/2013/11/connecting-and-calibrating-hmc5883l.html
 
 Setup i2c (Raspbian Jessie)
-	# nano /etc/modules
+```
+# nano /etc/modules
+```
 Add the following lines:
-	# i2c-bcm2708
-# i2c-dev
+```
+i2c-bcm2708
+i2c-dev
+```
 Connect HMC5883L to i2c connections
+![RaspberryPiZeroPinout](https://elementztechblog.files.wordpress.com/2016/05/gpio.png?w=700)
 
-Pin 1 - 5V connect to VCC
+```
+Pin 2 - 5V connect to VCC
 Pin 3 - SDA connect to SDA
 Pin 5 - SCL connect to SCL
 Pin 6 - Ground connect to GND
+```
 Check if HMC5883L is connected.
-	# apt-get install i2c-tools
-	# i2cdetect -y 1
+```
+# apt-get install i2c-tools
+# i2cdetect -y 1
+```
 You should see this output:
+```
+Output:
      0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
 00:          -- -- -- -- -- -- -- -- -- -- -- -- --
 10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- 1e --
@@ -168,14 +191,18 @@ You should see this output:
 50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 70: -- -- -- -- -- -- -- --
-PYTHON
-Run /python/HMC5883L/findoffset.py
+```
+# PYTHON
+Run `/python/HMC5883L/findoffset.py`
+
 Output:
-		minx:  -149
+```
+minx:  -149
 miny:  -368
 maxx:  237
 maxy:  65
 x offset:  44
 y offset:  -152
-Use the x and y offset found and change it in /python/HMC5883L/testsensor.py
-Run /python/HMC5883L/testsensor.py and test every 90 degrees.
+```
+Use the x and y offset found and change it in `/python/HMC5883L/testsensor.py`
+Run `/python/HMC5883L/testsensor.py` and test every 90 degrees.
