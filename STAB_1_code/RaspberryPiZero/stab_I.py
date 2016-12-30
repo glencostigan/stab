@@ -1,15 +1,12 @@
 import time
 import csv
 import numpy
-import Adafruit_BMP.BMP085 as BMP085
-import Adafruit_ADS1x15
+import Adafruit_BMP.BMP085 as BMP180
+import Adafruit_ADS1x15.ADS1115 as adc
 import smbus
 
 power_mgmt_1 = 0x6b
 power_mgmt_2 = 0x6c
-
-adc = Adafruit_ADS1x15.ADS1115()
-BMP180 = BMP085.BMP085()
 
 bus = smbus.SMBus(0)
 address = 0x1e
@@ -69,11 +66,11 @@ def main():
     ########given#######
     # state launch conditions
     R = 287  # J/(kg*K)
-    h_o = 0  # m
-    P_o = 101300  # Pa
-    L = -0.0065  # K/m
-    T_o = 273  # K
-    g = 9.81  # m/s^2
+    # h_o = 0  # m
+    # P_o = 101300  # Pa
+    # L = -0.0065  # K/m
+    # T_o = 273  # K
+    # g = 9.81  # m/s^2
     # state the gain of motor
     kp = 2
     ki = 0
