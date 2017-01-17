@@ -60,7 +60,6 @@ def main():
 
     delay_period = 0.01
     t = 0
-    var = 1
     scale = 200
 
     ########given#######
@@ -71,7 +70,7 @@ def main():
     # L = -0.0065  # K/m
     # T_o = 273  # K
     # g = 9.81  # m/s^2
-    # state the gain of motor
+    # state the gain of controller
     kp = 2
     ki = 0
     kd = 1
