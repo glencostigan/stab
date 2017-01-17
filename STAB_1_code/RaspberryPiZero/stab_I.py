@@ -81,7 +81,7 @@ def main():
     # state desired roll
     r = 10  # degrees/s
 
-    while var == 1:  # infinite loop
+    while True:  # infinite loop
         # calculate time
         t_old = t
         t = current_milli_time()
